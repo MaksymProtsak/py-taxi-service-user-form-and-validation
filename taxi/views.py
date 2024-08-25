@@ -93,3 +93,8 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverCreateView(LoginRequiredMixin, generic.CreateView):
     model = Driver
     form_class = DriverForm
+
+
+class DriverDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Driver
+    success_url = reverse_lazy("taxi:driver-list")
