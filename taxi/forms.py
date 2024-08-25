@@ -24,3 +24,9 @@ class DriverForm(forms.ModelForm):
             driver.save()
 
         return driver
+
+
+class DriverLicenseUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Driver
+        fields = ("license_number",)
