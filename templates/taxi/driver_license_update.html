@@ -3,7 +3,6 @@
 
 {% block content %}
   <h1>Update a license</h1>
-  <p>{{ object.id }}</p>
   <form action="" method="post" novalidate>
     {% csrf_token %}
     {{ form.as_p }}
