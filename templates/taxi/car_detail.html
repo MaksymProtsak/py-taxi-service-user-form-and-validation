@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <p>User: is {{ user.id }}</p>
   <h1>
     {{ car.model }}
     <a href="{% url 'taxi:car-delete' pk=car.id %}" class="btn btn-danger link-to-page">
@@ -12,7 +13,7 @@
     </a>
   </h1>
   <p>Manufacturer: ({{ car.manufacturer.name }}, {{ car.manufacturer.country }})</p>
-  <h1>Drivers</h1>
+  <h1>Drivers <a class="btn btn-primary link-to-page" href="">Assign me to this car</a></h1>
   <hr>
   <ul>
     {% for driver in car.drivers.all %}
