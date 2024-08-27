@@ -16,11 +16,20 @@ class CleanLicenseNumberMixin:
         last_5_is_digit = last_5.isdigit()
 
         if len_license_number != 8:
-            raise ValidationError(f"Length of license number should be 8 symbols, not: {len_license_number}")
+            raise ValidationError(
+                f"Length of license number should be 8 symbols, not: "
+                f"{len_license_number}"
+            )
         if not first_3_chars_alpha or not first_3_chars_uppercase:
-            raise ValidationError(f"The first 3 symbols should be uppercase letters, not: {first_3}")
+            raise ValidationError(
+                f"The first 3 symbols should be uppercase letters, not: "
+                f"{first_3}"
+            )
         if not last_5_is_digit:
-            raise ValidationError(f"The last 5 symbols should be digits, not: {last_5}")
+            raise ValidationError(
+                f"The last 5 symbols should be digits, not: "
+                f"{last_5}"
+            )
 
         return self.cleaned_data["license_number"]
 
@@ -35,7 +44,10 @@ class DriverForm(forms.ModelForm, CleanLicenseNumberMixin):
             "license_number",
             "password"
         )
-        password = forms.CharField(label="Password", widget=forms.PasswordInput)
+        password = forms.CharField(
+            label="Password",
+            widget=forms.PasswordInput
+        )
 
     def save(self, commit=True):
         driver = super().save(commit=False)

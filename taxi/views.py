@@ -120,7 +120,9 @@ class AssignDriverToCarView(LoginRequiredMixin, View):
         car = Car.objects.get(pk=kwargs["pk"])
         driver = Driver.objects.get(id=request.user.id)
         car.drivers.add(driver)
-        return HttpResponseRedirect(reverse_lazy("taxi:car-detail", kwargs={"pk": car.pk}))
+        return HttpResponseRedirect(
+            reverse_lazy("taxi:car-detail", kwargs={"pk": car.pk})
+        )
 
 
 class RemoveDriverFromCarView(LoginRequiredMixin, View):
@@ -128,7 +130,6 @@ class RemoveDriverFromCarView(LoginRequiredMixin, View):
         car = Car.objects.get(pk=kwargs["pk"])
         driver = Driver.objects.get(id=request.user.id)
         car.drivers.remove(driver)
-        return HttpResponseRedirect(reverse_lazy("taxi:car-detail", kwargs={"pk": car.pk}))
-
-
-
+        return HttpResponseRedirect(reverse_lazy(
+            "taxi:car-detail", kwargs={"pk": car.pk})
+        )
