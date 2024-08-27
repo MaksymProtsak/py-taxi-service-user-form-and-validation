@@ -108,7 +108,7 @@ class DriverDeleteView(LoginRequiredMixin, generic.DeleteView):
 class DriverLicenseUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Driver
     form_class = DriverLicenseUpdateForm
-    template_name = "taxi/driver_license_update.html"
+    template_name = "taxi/driver_update.html"
 
     def get_success_url(self):
         driver = self.get_object()
